@@ -1,12 +1,15 @@
 class Park {
-    public Attraction[] attractionsArray = new Attraction[5];
+    private static int attractionCount = 0;
 
-    void addAttractions() {
-        attractionsArray[0] = new Attraction();
-        attractionsArray[1] = new Attraction();
-        attractionsArray[2] = new Attraction();
-        attractionsArray[3] = new Attraction();
-        attractionsArray[4] = new Attraction();
+    private Attraction[] attractionsArray = new Attraction[5];
+
+    void addAttraction(String name, String openingHours, long price) {
+        if (attractionCount == 5) {
+            System.out.println("Нет места для аттракционов в парке");
+        } else {
+            attractionsArray[attractionCount] = new Attraction(name, openingHours, price);
+            attractionCount++;
+        }
     }
 
     static class Attraction {
@@ -14,11 +17,13 @@ class Park {
         private String openingHours;
         private long price;
 
-        void setValues(String name, String openingHours, long price) {
+        Attraction(String name, String openingHours, long price) {
             this.name = name;
             this.openingHours = openingHours;
             this.price = price;
+            System.out.println("Добавился аттракцион - " + name);
         }
+
     }
 }
 
