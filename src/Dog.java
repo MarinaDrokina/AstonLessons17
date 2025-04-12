@@ -1,19 +1,19 @@
 public class Dog extends Animals {
     static int numberDogs;
 
-    Dog(int distance, String name) {
-        super(distance, name);
+    Dog(String name) {
+        super(name);
 
         numberDogs++;
         System.out.println("Собак создано " + numberDogs);
     }
 
-    public void run() {
+    public void run(int distance) {
         if (distance <= 500) System.out.println("Собака " + name + " пробежал " + distance + " м");
         else System.out.println("Собака " + name + " устала и не может бежать " + distance + " м");
     }
 
-    public void swim() {
+    public void swim(int distance) {
         if (distance <= 10) System.out.println("Собака " + name + " проплывает " + distance + " м");
         else System.out.println("Собака " + name + " не может проплыть " + distance + " м");
     }

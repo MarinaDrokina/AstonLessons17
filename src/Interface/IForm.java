@@ -10,7 +10,7 @@ public interface IForm {
 
     double calculatePerimeter();
 
-     default String resultText() {
+    default String resultText() {
         return "Area = " + calculateArea() + ", Perimeter = " + calculatePerimeter() + " ,Bordercolor = " + borderColor() + " ,Backgroundcolor = " + backgroundColor();
     }
 }

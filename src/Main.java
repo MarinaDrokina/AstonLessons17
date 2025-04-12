@@ -3,24 +3,25 @@ import java.util.concurrent.ThreadLocalRandom;
 public class Main {
     public static void main(String[] args) {
 
-        Animals Cat1 = new Cat(ThreadLocalRandom.current().nextInt(0, 500), "Tom");
-        Cat1.run();
-        Cat1.swim();
+        Animals cat1 = new Cat("Tom");
+        cat1.run((ThreadLocalRandom.current().nextInt(0, 500)));
+        cat1.swim((ThreadLocalRandom.current().nextInt(0, 500)));
 
-        Animals Dog1 = new Dog(ThreadLocalRandom.current().nextInt(0, 800), "Bobic");
-        Dog1.run();
-        Dog1.swim();
+        Animals dog1 = new Dog("Bobic");
+        dog1.run((ThreadLocalRandom.current().nextInt(0, 800)));
+        dog1.swim((ThreadLocalRandom.current().nextInt(0, 800)));
 
-        Cat.addFoodBowl();
+        Bowl bowl = new Bowl();
+        bowl.addFoodBowl();
 
         Cat[] catsArr = new Cat[5];
-        catsArr[0] = new Cat(0, "Murka");
-        catsArr[1] = new Cat(0, "Samon");
-        catsArr[2] = new Cat(0, "KusKus");
-        catsArr[3] = new Cat(0, "Snowbal");
-        catsArr[4] = new Cat(0, "MrsNorris");
+        catsArr[0] = new Cat("Murka");
+        catsArr[1] = new Cat("Samon");
+        catsArr[2] = new Cat("KusKus");
+        catsArr[3] = new Cat("Snowbal");
+        catsArr[4] = new Cat("MrsNorris");
         for (int i = 0; i < catsArr.length; i++) {
-            catsArr[i].feedCat();
+            catsArr[i].feedCat(bowl);
         }
         System.out.println("Животных создано " + Animals.numberAnimals);
     }

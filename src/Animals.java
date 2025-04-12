@@ -2,21 +2,19 @@ abstract class Animals {
 
     static int numberAnimals;
 
-    public int distance;
     public String name;
 
-    public Animals(int distance, String name) {
-        this.distance = distance;
+    public Animals(String name) {
         this.name = name;
         numberAnimals++;
     }
 
-    public void run() {
+    public void run(int distance) {
 
         System.out.println(name + " пробежал " + distance + " м");
     }
 
-    public void swim() {
+    public void swim(int distance) {
         System.out.println(name + " проплыл " + distance + " м");
     }
 }
