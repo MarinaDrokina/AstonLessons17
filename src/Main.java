@@ -14,23 +14,22 @@ public class Main {
         try {
             int result = Test.sortArr(incorrectTestArrayRows);
             System.out.println(result);
-        } catch (MyArraySizeException exc) {
-            System.out.println("Размер массива не соответствует условию");
-        } catch (MyArrayDataException exc) {
+
+        } catch (MyArraySizeException | MyArrayDataException exc) {
             System.out.println(exc.getMessage());
         }
+
         try {
             int result = Test.sortArr(testArray);
             System.out.println(result);
-        } catch (MyArraySizeException exc) {
-            System.out.println("Размер массива не соответствует условию");
-        } catch (MyArrayDataException exc) {
+        } catch (MyArraySizeException | MyArrayDataException exc) {
             System.out.println(exc.getMessage());
         }
+
         try {
             for (int j = 0; j < 5; j++) {
                 if (testArray[j].length != 4)
-                    System.out.println("Сюда мы не попападем");
+                    System.out.println("All ok");
             }
         } catch (ArrayIndexOutOfBoundsException exc) {
             System.out.println("Значение выходит за границы диапазона");
