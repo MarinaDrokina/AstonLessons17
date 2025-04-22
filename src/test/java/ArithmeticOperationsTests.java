@@ -4,7 +4,6 @@ import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
 
-
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 public class ArithmeticOperationsTests {
@@ -21,16 +20,14 @@ public class ArithmeticOperationsTests {
         Assertions.assertEquals(5, ArithmeticOperations.subtraction(8, 3));
     }
 
-    @DisplayName("a devide by 0")
+    @DisplayName("a divide by 0")
     @Test
     public void divideException() {
-        Exception exception = assertThrows(IllegalArgumentException.class, () -> {
-            ArithmeticOperations.divide(10, 0);
-        });
+        Exception exception = assertThrows(IllegalArgumentException.class, () -> ArithmeticOperations.divide(10, 0));
         Assertions.assertEquals("Деление на ноль не допустимо", exception.getMessage());
     }
 
-    @DisplayName("a devide by b")
+    @DisplayName("a divide by b")
     @Test
     public void divideTwo() {
         Assertions.assertEquals(5, ArithmeticOperations.divide(10, 2));
@@ -45,6 +42,17 @@ public class ArithmeticOperationsTests {
     })
     public void validateAddParam(int a, int b, int result) {
         Assertions.assertEquals(result, ArithmeticOperations.add(a, b));
+    }
+
+    @ParameterizedTest
+    @CsvSource({
+            "5,3,15",
+            "-4,-2,8",
+            "-6,2,-12",
+            "2,0,0"
+    })
+    public void validateMultiplyParam(int a, int b, int result) {
+        Assertions.assertEquals(result, ArithmeticOperations.multiply(a, b));
     }
 }
 

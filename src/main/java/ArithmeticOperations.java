@@ -1,4 +1,5 @@
 public class ArithmeticOperations {
+
     public static int add(int a, int b) {
         return a + b;
     }
@@ -15,7 +16,11 @@ public class ArithmeticOperations {
         if (b == 0) {
             throw new IllegalArgumentException("Деление на ноль не допустимо");
         }
-        return a / b;
+        {
+            return a / b;
+        }
     }
 }
+
+
 

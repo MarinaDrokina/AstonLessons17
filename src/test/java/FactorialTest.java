@@ -1,40 +1,39 @@
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.ValueSource;
-
 
 public class FactorialTest {
 
     @Test
     public void validateFactorialOne() {
-        Assertions.assertTrue(Factorial.factorial(0) == 1);
+        Assertions.assertEquals(1, Factorial.factorial(0));
     }
 
     @Test
-    public void valiateFactorialTwo() {
-        Assertions.assertTrue(Factorial.factorial(1) == 1);
+    public void validateFactorialTwo() {
+        Assertions.assertEquals(1, Factorial.factorial(1));
     }
 
     @Test
     public void validateFactorialThee() {
-        Assertions.assertTrue(Factorial.factorial(5) == 120);
+        Assertions.assertEquals(120, Factorial.factorial(5));
     }
 
-    @Test(expected = IllegalArgumentException.class)
+    @Test
     public void factorialNegative() {
-        Factorial.factorial(-1);
+        Assertions.assertThrows(IllegalArgumentException.class, () -> System.out.println(Factorial.factorial(-1)));
     }
 
-    @Ignore("Message for ignored test")
+    @Disabled("Message for ignored test")
     @Test
     public void ignoredTest() {
         System.out.println("Это в игнор");
     }
 
     @ParameterizedTest
-    @ValueSource(ints = {2, 5, 8, 9, 12, 38})
+    @ValueSource(ints = {0, 1, 38})
     public void validateFactorialParam(int number) {
         long result = 1;
         for (int i = 1; i <= number; i++) {

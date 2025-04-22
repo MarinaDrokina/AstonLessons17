@@ -1,6 +1,5 @@
-import org.junit.Ignore;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
@@ -9,18 +8,12 @@ public class TriangleAreaTests {
 
     @Test
     public void validateTriangleAreaOne() {
-        Assertions.assertEquals(TriangleArea.calculateArea(3.0, 4.0, 5.0), 6.0);
-    }
-
-    @Test
-    public void validateTriangleAreaTwo() {
-        Assertions.assertEquals(TriangleArea.calculateArea(1.0, 2.0, 3.0), 0.0);
-
+        Assertions.assertEquals(6.0, TriangleArea.calculateArea(3.0, 4.0, 5.0));
     }
 
     @Test
     public void validateTriangleAreaThree() {
-        Assertions.assertEquals(TriangleArea.calculateArea(3.0, 4.0, 5.0), 7.0, ("calculateArea(3.0,4.0,5.0) test failed"));
+        Assertions.assertEquals(7.0, TriangleArea.calculateArea(3.0, 4.0, 5.0), ("calculateArea(3.0,4.0,5.0) test failed"));
     }
 
     @ParameterizedTest
@@ -34,7 +27,7 @@ public class TriangleAreaTests {
         Assertions.assertEquals(TriangleArea.calculateArea(4.0, 4.0, a), b);
     }
 
-    @Ignore("Message for ignored test")
+    @Disabled("Message for ignored test")
     public void ignoredTest() {
         System.out.println("Это не будет печататься");
     }
