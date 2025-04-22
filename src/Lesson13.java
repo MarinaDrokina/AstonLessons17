@@ -3,9 +3,7 @@ import java.util.*;
 public class Lesson13 {
     public static void main(String[] args) {
 
-
         // Задание 2
-
         PhoneBook phoneBook = new PhoneBook();
         phoneBook.addContact("4452234", "Kivrin");
         phoneBook.addContact("4432145", "Kovrov");
@@ -14,12 +12,9 @@ public class Lesson13 {
         phoneBook.addContact("4821369", "Mishina");
         phoneBook.addContact("4458090", "Mihailov");
         phoneBook.addContact("4441334", "Kovrov");
-
         phoneBook.searchSurnameTel("Kovrov");
 
-
-// Задание 1
-
+        // Задание 1
         HashSet<Student> student = new HashSet<>(Set.of());
         student.add(new Student("Lavrov", "A", 4, List.of(1, 2, 3)));
         student.add(new Student("Ivanova", "B", 3, List.of(5, 4, 5)));
@@ -33,17 +28,17 @@ public class Lesson13 {
         }
 
         System.out.println("Обновленный список без удаленных студентов\n");
-        Student.removeStudents(student);
+        Deanery.removeStudents(student);
         for (Student s : student) {
             System.out.println(s);
         }
 
         System.out.println("Список студентов, перешедших на следующий курс: \n");
-        Student.upgradeCourse(student);
+        Deanery.upgradeCourse(student);
         for (Student s : student) {
             System.out.println(s);
         }
-        Student.printStudents(student, 2);
+        Deanery.printStudents(student, 2);
 
     }
 }

@@ -1,22 +1,24 @@
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 public class Student {
-    String name;
-    String group;
-    Integer course;
-    Double averageMark;
+    private String name;
+    private String group;
+    private Integer course;
+    private List<Integer> listMarks;
 
     Student(String name, String group, Integer course, List<Integer> listMarks) {
         this.name = name;
         this.group = group;
         this.course = course;
+        this.listMarks = listMarks;
+    }
+
+    public double averageMark() {
         int sum = 0;
         for (int num : listMarks) {
             sum += num;
         }
-        this.averageMark = (double) (sum / listMarks.size());
+        return (double) sum / listMarks.size();
     }
 
     @Override
@@ -25,28 +27,40 @@ public class Student {
                 "name='" + name + '\'' +
                 ", group='" + group + '\'' +
                 ", course= " + course +
-                ", averageMark= " + averageMark +
+                ", averageMark= " + averageMark() +
                 '}';
     }
 
-    public static void removeStudents(HashSet<Student> student) {
-        student.removeIf(x -> x.averageMark < 3);
+    public String getGroup() {
+        return group;
     }
 
-    public static void upgradeCourse(HashSet<Student> student) {
-        for (Student s : student) {
-            if (s.averageMark >= 3) s.course++;
-        }
+    public void setGroup(String group) {
+        this.group = group;
     }
 
-    public static void printStudents(Set<Student> student, int course) {
-        for (Student s : student) {
-            if (s.course == course) {
-                System.out.println("Student{" +
-                        "name='" + s.name + '\'' +
-                        '}');
-            }
-        }
+    public Integer getCourse() {
+        return course;
+    }
+
+    public void setCourse(Integer course) {
+        this.course = course;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
+    }
+
+    public List<Integer> getListMarks() {
+        return listMarks;
+    }
+
+    public void setListMarks(List<Integer> listMarks) {
+        this.listMarks = listMarks;
     }
 }
 

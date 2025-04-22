@@ -1,7 +1,7 @@
 import java.util.HashMap;
 import java.util.Map;
 
-class PhoneBook {
+public class PhoneBook {
 
     Map<String, String> phoneBook = new HashMap<>();
 
