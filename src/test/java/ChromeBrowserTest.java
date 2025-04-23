@@ -1,11 +1,11 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
-import org.openqa.selenium.*;
+import org.junit.jupiter.api.*;
+import org.openqa.selenium.PageLoadStrategy;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
+import pages.OnlinePaymentPage;
+import utils.ConfigProperties;
 
 public class ChromeBrowserTest {
 
@@ -50,14 +50,14 @@ public class ChromeBrowserTest {
     @Test
     public void checkLinkPage() {
         onlinePaymentPage.checkLink();
-        driver.navigate().back();
+        Assertions.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
     }
 
     @Test
     public void checkPlaceholderText() {
         onlinePaymentPage.checkPlholderUslgSvz();
         onlinePaymentPage.checkPlholderHomeInternet();
-        onlinePaymentPage.checkPlholderInstalmentPay();
+        onlinePaymentPage.checkPlaceholderInstalmentPay();
         onlinePaymentPage.checkPlaceholderAppear();
     }
 

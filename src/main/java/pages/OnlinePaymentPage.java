@@ -1,4 +1,5 @@
-import org.junit.Assert;
+package pages;
+
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -6,6 +7,7 @@ import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
+import utils.ConfigProperties;
 
 import java.time.Duration;
 
@@ -174,7 +176,6 @@ public class OnlinePaymentPage {
 
     public void checkLink() {
         linkDetailOfService.click();
-        Assert.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
     }
 
     public void selectValue() {
@@ -217,7 +218,8 @@ public class OnlinePaymentPage {
         wait.until(ExpectedConditions.attributeContains(internetEmailField, "placeholder", "E-mail для отправки чека"));
     }
 
-    public void checkPlholderInstalmentPay() {
+    public void checkPlaceholderInstalmentPay() {
+        wait.until(ExpectedConditions.elementToBeClickable(homeInternetBtn));
         homeInternetBtn.click();
         wait.until(ExpectedConditions.elementToBeClickable(instalmentValue));
         instalmentValue.click();
