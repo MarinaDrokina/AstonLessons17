@@ -1,4 +1,6 @@
-import org.junit.Assert;
+package pages;
+
+import org.junit.jupiter.api.Assertions;
 import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -90,7 +92,7 @@ public class OnlinePaymentPage {
 
     public void checkLink() {
         linkDetailOfService.click();
-        Assert.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
+        Assertions.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
     }
 
     public void selectValue() {

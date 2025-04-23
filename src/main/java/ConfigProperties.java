@@ -8,7 +8,7 @@ public class ConfigProperties {
 
     static {
         try {
-            fileInputStream = new FileInputStream("test/resources/config.properties");
+            fileInputStream = new FileInputStream("src/test/resources/config.properties");
             PROPERTIES = new Properties();
             PROPERTIES.load(fileInputStream);
         } catch (IOException exc) {
