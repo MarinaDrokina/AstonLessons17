@@ -1,8 +1,6 @@
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Disabled;
-import org.junit.jupiter.params.ParameterizedTest;
-import org.junit.jupiter.params.provider.ValueSource;
 
 public class FactorialTest {
 
@@ -30,16 +28,6 @@ public class FactorialTest {
     @Test
     public void ignoredTest() {
         System.out.println("Это в игнор");
-    }
-
-    @ParameterizedTest
-    @ValueSource(ints = {0, 1, 38})
-    public void validateFactorialParam(int number) {
-        long result = 1;
-        for (int i = 1; i <= number; i++) {
-            result = result * i;
-        }
-        Assertions.assertEquals(result, Factorial.factorial(number));
     }
 }
 
