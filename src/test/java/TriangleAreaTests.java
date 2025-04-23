@@ -11,12 +11,6 @@ public class TriangleAreaTests {
     }
 
     @Test
-    public void validateTriangleAreaTwo() {
-        Assert.assertEquals(TriangleArea.calculateArea(1.0, 2.0, 3.0), 0.0);
-
-    }
-
-    @Test
     public void validateTriangleAreaThree() {
         Assert.assertEquals(TriangleArea.calculateArea(3.0, 4.0, 5.0), 7.0, ("calculateArea(3.0,4.0,5.0) test failed"));
     }

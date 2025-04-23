@@ -5,17 +5,17 @@ import org.testng.annotations.Test;
 public class ComparingNumTests {
     @Test(description = "The Second is less than the First")
     public void validateCompareOne() {
-        Assert.assertEquals(1, ComparingNum.numericComparison(3, 2));
+        Assert.assertEquals(ComparingNum.numericComparison(3, 2), 1);
     }
 
     @Test(description = "The First is less than the Second")
     public void validateCompareTwo() {
-        Assert.assertEquals(-1, ComparingNum.numericComparison(2, 4));
+        Assert.assertEquals(ComparingNum.numericComparison(2, 4), -1);
     }
 
     @Test(description = "The First number is equal to the Second")
     public void validateCompareThee() {
-        Assert.assertEquals(0, ComparingNum.numericComparison(4, 4));
+        Assert.assertEquals(ComparingNum.numericComparison(4, 4), 0);
     }
 
     @DataProvider(name = "validateCompareParam")

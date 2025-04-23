@@ -16,7 +16,9 @@ public class ArithmeticOperations {
         if (b == 0) {
             throw new IllegalArgumentException("Деление на ноль не допустимо");
         }
-        return a / b;
+        {
+            return a / b;
+        }
     }
 }
 
