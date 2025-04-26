@@ -11,6 +11,8 @@ import utils.ConfigProperties;
 
 import java.time.Duration;
 
+import static org.openqa.selenium.support.ui.ExpectedConditions.not;
+
 public class OnlinePaymentPage {
 
     private static WebDriver driver;
@@ -205,8 +207,13 @@ public class OnlinePaymentPage {
     }
 
     public void checkPlholderUslgSvz() {
-        wait.until(ExpectedConditions.visibilityOf(uslugiSvzBtn));
+        wait.until(ExpectedConditions.visibilityOf(continuePayConnection));
+        continuePayConnection.sendKeys("");
+        wait.until(ExpectedConditions.elementToBeClickable(uslugiSvzBtn));
         uslugiSvzBtn.click();
+        wait.until(ExpectedConditions.elementToBeClickable(uslugiSvzValue));
+        uslugiSvzValue.click();
+        wait.until(not(ExpectedConditions.visibilityOf(uslugiSvzValue)));
         wait.until(ExpectedConditions.attributeContains(phoneNumField, "placeholder", "Номер телефона"));
         wait.until(ExpectedConditions.attributeContains(sumField, "placeholder", "Сумма"));
         wait.until(ExpectedConditions.attributeContains(emailField, "placeholder", "E-mail для отправки чека"));
@@ -214,8 +221,9 @@ public class OnlinePaymentPage {
 
     public void checkPlholderHomeInternet() {
         uslugiSvzBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(homeInternetValue));
+        wait.until(ExpectedConditions.elementToBeClickable(homeInternetValue));
         homeInternetValue.click();
+        wait.until(not(ExpectedConditions.visibilityOf(homeInternetValue)));
         wait.until(ExpectedConditions.visibilityOf(subscriberNumField));
         wait.until(ExpectedConditions.attributeContains(subscriberNumField, "placeholder", "Номер абонента"));
         wait.until(ExpectedConditions.attributeContains(internetSumField, "placeholder", "Сумма"));
@@ -223,10 +231,10 @@ public class OnlinePaymentPage {
     }
 
     public void checkPlaceholderInstalmentPay() {
-        wait.until(ExpectedConditions.elementToBeClickable(homeInternetBtn));
         homeInternetBtn.click();
         wait.until(ExpectedConditions.elementToBeClickable(instalmentValue));
         instalmentValue.click();
+        wait.until(not(ExpectedConditions.visibilityOf(instalmentValue)));
         wait.until(ExpectedConditions.visibilityOf(accountNumOn44Field));
         wait.until(ExpectedConditions.attributeContains(accountNumOn44Field, "placeholder", "Номер счета на 44"));
         wait.until(ExpectedConditions.attributeContains(instalmentSumField, "placeholder", "Сумма"));
@@ -235,7 +243,7 @@ public class OnlinePaymentPage {
 
     public void checkPlaceholderAppear() {
         instalmentBtn.click();
-        wait.until(ExpectedConditions.visibilityOf(arrearValue));
+        wait.until(ExpectedConditions.elementToBeClickable(arrearValue));
         arrearValue.click();
         wait.until(ExpectedConditions.visibilityOf(scoreArrearsField));
         wait.until(ExpectedConditions.attributeContains(scoreArrearsField, "placeholder", "Номер счета на 2073"));
