@@ -11,18 +11,14 @@ public class ChromeBrowserTest {
     public static WebDriver driver;
     public static OnlinePaymentPage onlinePaymentPage;
 
-    @BeforeAll
-    public static void setupAll() {
+    @BeforeEach
+    public void setupForEach() {
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver(chromeOptions);
         driver.manage().deleteAllCookies();
         driver.manage().window().maximize();
         driver.get(ConfigProperties.getProperty("onlinepaymentpage"));
-    }
-
-    @BeforeEach
-    public void setupForEach() {
         WebDriverManager.chromedriver().setup();
         onlinePaymentPage = new OnlinePaymentPage(driver);
         onlinePaymentPage.clickCancelCookieIfVisible();
