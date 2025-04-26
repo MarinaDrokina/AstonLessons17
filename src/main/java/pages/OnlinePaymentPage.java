@@ -200,6 +200,10 @@ public class OnlinePaymentPage {
         continuePayConnection.click();
     }
 
+    public void checkClickBtn() {
+        wait.until(ExpectedConditions.visibilityOf(payDescriptionIconsVisa));
+    }
+
     public void checkPlholderUslgSvz() {
         wait.until(ExpectedConditions.visibilityOf(uslugiSvzBtn));
         uslugiSvzBtn.click();
@@ -269,5 +273,15 @@ public class OnlinePaymentPage {
         wait.until(ExpectedConditions.textToBePresentInElement(payDescriptionCardVerificationValue, "CVC"));
         wait.until(ExpectedConditions.textToBePresentInElement(payDescriptionCardExpirationDate, "Срок действия"));
         wait.until(ExpectedConditions.textToBePresentInElement(payDescriptionCardHolder, "Имя держателя (как на карте)"));
+    }
+
+    public void oneClick() {
+        clickEntryMenu();
+        selectValue();
+        inputPhoneNum(ConfigProperties.getProperty("phoneNum"));
+        inputSum(ConfigProperties.getProperty("sum"));
+        inputEmail(ConfigProperties.getProperty("email"));
+        clickContinueBtn();
+        switchToIFraimPayment();
     }
 }

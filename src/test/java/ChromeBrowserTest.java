@@ -14,7 +14,6 @@ public class ChromeBrowserTest {
 
     @BeforeAll
     public static void setupAll() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver(chromeOptions);
@@ -24,15 +23,24 @@ public class ChromeBrowserTest {
 
     @BeforeEach
     public void setupForEach() {
+        WebDriverManager.chromedriver().setup();
         driver.get(ConfigProperties.getProperty("onlinepaymentpage"));
         onlinePaymentPage = new OnlinePaymentPage(driver);
         onlinePaymentPage.clickCancelCookieIfVisible();
     }
 
     @Test
-    public void OnlinePay() {
+    public void verifySubtitle() {
         onlinePaymentPage.checkText();
+    }
+
+    @Test
+    public void verifyLogo() {
         onlinePaymentPage.checkLogo();
+    }
+
+    @Test
+    public void onlinePay() {
         onlinePaymentPage.clickEntryMenu();
         onlinePaymentPage.selectValue();
         onlinePaymentPage.inputPhoneNum(ConfigProperties.getProperty("phoneNum"));
@@ -40,10 +48,36 @@ public class ChromeBrowserTest {
         onlinePaymentPage.inputEmail(ConfigProperties.getProperty("email"));
         onlinePaymentPage.clickContinueBtn();
         onlinePaymentPage.switchToIFraimPayment();
+        onlinePaymentPage.checkClickBtn();
+    }
+
+    @Test
+    public void verifyPayDescriptionText() {
+        onlinePaymentPage.oneClick();
         onlinePaymentPage.checkPayDescriptionText();
+    }
+
+    @Test
+    public void verifyPayDescriptionButton() {
+        onlinePaymentPage.oneClick();
         onlinePaymentPage.checkPayDescriptionButton();
+    }
+
+    @Test
+    public void verifyPayDescriptionPhoneNum() {
+        onlinePaymentPage.oneClick();
         onlinePaymentPage.checkPayDescriptionPhoneNum();
+    }
+
+    @Test
+    public void verifyPayDescriptionIcons() {
+        onlinePaymentPage.oneClick();
         onlinePaymentPage.checkPayDescriptionIcons();
+    }
+
+    @Test
+    public void verifyPayDescriptionCardFieldText() {
+        onlinePaymentPage.oneClick();
         onlinePaymentPage.checkPayDescriptionCardFieldText();
     }
 
@@ -61,8 +95,8 @@ public class ChromeBrowserTest {
         onlinePaymentPage.checkPlaceholderAppear();
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public void tearDown() {
         driver.quit();
     }
 }
