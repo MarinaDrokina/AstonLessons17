@@ -1,8 +1,5 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
-import org.junit.jupiter.api.AfterAll;
-import org.junit.jupiter.api.BeforeAll;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.openqa.selenium.PageLoadStrategy;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -16,7 +13,6 @@ public class ChromeBrowserTest {
 
     @BeforeAll
     public static void setupAll() {
-        WebDriverManager.chromedriver().setup();
         ChromeOptions chromeOptions = new ChromeOptions();
         chromeOptions.setPageLoadStrategy(PageLoadStrategy.EAGER);
         driver = new ChromeDriver(chromeOptions);
@@ -27,25 +23,38 @@ public class ChromeBrowserTest {
 
     @BeforeEach
     public void setupForEach() {
+        WebDriverManager.chromedriver().setup();
         onlinePaymentPage = new OnlinePaymentPage(driver);
         onlinePaymentPage.clickCancelCookieIfVisible();
     }
 
     @Test
-    public void OnlinePay() {
+    public void verifySubtitle() {
         onlinePaymentPage.checkText();
+    }
+
+    @Test
+    public void verifyLogo() {
         onlinePaymentPage.checkLogo();
+    }
+
+    @Test
+    public void onlinePay() {
         onlinePaymentPage.clickEntryMenu();
         onlinePaymentPage.selectValue();
         onlinePaymentPage.inputPhoneNum(ConfigProperties.getProperty("phoneNum"));
         onlinePaymentPage.inputSum(ConfigProperties.getProperty("sum"));
         onlinePaymentPage.inputEmail(ConfigProperties.getProperty("email"));
         onlinePaymentPage.clickContinueBtn();
+    }
+
+    @Test
+    public void verifyLink() {
         onlinePaymentPage.checkLink();
     }
 
-    @AfterAll
-    public static void tearDown() {
+    @AfterEach
+    public void tearDown() {
         driver.quit();
     }
 }

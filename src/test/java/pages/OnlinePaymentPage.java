@@ -58,11 +58,20 @@ public class OnlinePaymentPage {
     @FindBy(id = "connection-email")
     private WebElement emailField;
 
-    @FindBy(id = "pay-connection")
+    @FindBy(xpath = "//*[@id='pay-connection']//button[@type='submit']")
     private WebElement continueBtn;
 
     @FindBy(xpath = "//button[.='Отклонить']")
     private WebElement cancelCookie;
+
+    @FindBy(xpath = "//*[@class='bepaid-iframe']")
+    private WebElement bePaidIframe;
+
+    @FindBy(xpath = "//*[contains(text(),'Оплата банковской картой')]")
+    private WebElement payBankCard;
+
+    @FindBy(xpath = "//app-input//*[contains(@src,'visa-system')]")
+    private WebElement payDescriptionIconsVisa;
 
     public void clickCancelCookieIfVisible() {
         WebDriverWait waitCookie = new WebDriverWait(driver, Duration.ofSeconds(3));
@@ -93,6 +102,7 @@ public class OnlinePaymentPage {
     public void checkLink() {
         linkDetailOfService.click();
         Assertions.assertEquals("https://www.mts.by/help/poryadok-oplaty-i-bezopasnost-internet-platezhey/", driver.getCurrentUrl());
+        wait.until(ExpectedConditions.visibilityOf(payBankCard));
     }
 
     public void selectValue() {
@@ -114,8 +124,10 @@ public class OnlinePaymentPage {
     }
 
     public void clickContinueBtn() {
+        wait.until(ExpectedConditions.elementToBeClickable(continueBtn));
         continueBtn.click();
+        wait.until(ExpectedConditions.visibilityOf(bePaidIframe));
+        driver.switchTo().frame(bePaidIframe);
+        wait.until(ExpectedConditions.visibilityOf(payDescriptionIconsVisa));
     }
-
 }
-
